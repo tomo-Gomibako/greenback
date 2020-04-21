@@ -6,10 +6,16 @@ using UnityEngine.UI;
 public class Modal : MonoBehaviour
 {
     [SerializeField]
-    private Button toggleButton;
+    private Button toggleButton = default;
 
     [SerializeField]
-    private GameObject modal;
+    private Button showButton = default;
+
+    [SerializeField]
+    private Button hideButton = default;
+
+    [SerializeField]
+    private GameObject modal = default;
     
     void Start()
     {
@@ -19,15 +25,33 @@ public class Modal : MonoBehaviour
         }
 
         modal.SetActive(false);
-        
+
         if(toggleButton != null)
         {
             toggleButton.onClick.AddListener(OnClick);
+        }
+
+        if(showButton != null)
+        {
+            showButton.onClick.AddListener(OnShowClick);
+        }
+
+        if(hideButton != null)
+        {
+            hideButton.onClick.AddListener(OnHideClick);
         }
     }
 
     private void OnClick() {
         bool currVisibility = modal.activeSelf;
         modal.SetActive(!currVisibility);
+    }
+
+    private void OnShowClick() {
+        modal.SetActive(true);
+    }
+
+    private void OnHideClick() {
+        modal.SetActive(false);
     }
 }
