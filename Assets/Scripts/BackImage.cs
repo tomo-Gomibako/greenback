@@ -16,15 +16,25 @@ public class BackImage : MonoBehaviour
         if(defaultColor != null) {
             defaultColor = Color.black;
             defaultColor.a = 0;
-            image.color = defaultColor;
+            SetColor(defaultColor);
         }
     }
 
     public void SetColor(Color color) {
+        if(image == null)
+        {
+            return;
+        }
+
         image.color = color;
     }
 
     public void SetImage(Sprite sprite) {
+        if(image == null)
+        {
+            return;
+        }
+        
         image.sprite = sprite;
     }
 }
