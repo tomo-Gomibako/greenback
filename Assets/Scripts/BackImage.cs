@@ -5,15 +5,19 @@ using UnityEngine.UI;
 
 public class BackImage : MonoBehaviour
 {
+    [SerializeField]
+    private Color defaultColor = default;
     private Image image = default;
 
     void Start()
     {
         image = GetComponent<Image>();
 
-        Color defaultColor = Color.white;
-        defaultColor.a = 0;
-        image.color = defaultColor;
+        if(defaultColor != null) {
+            defaultColor = Color.black;
+            defaultColor.a = 0;
+            image.color = defaultColor;
+        }
     }
 
     public void SetColor(Color color) {
